@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
     :root {
         --font-jetbrains: 'JetBrains Mono', monospace;
-
+        --font-londrina: 'Londrina Solid', sans-serif;
         --primary-color: #C6F277;
         --secondary-color: #9974F8;
         --black-color:  #16120F;
