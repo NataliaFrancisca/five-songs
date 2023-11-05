@@ -83,10 +83,9 @@ const View = () => {
                 <div />
                 <div />
                 <div />
-                <div />
             </section>
 
-            <Songs numberColor={paper_theme.white.number_color} />
+            <Songs viewTheme={paper_theme.white} />
 
         </ViewComponent>
     )
