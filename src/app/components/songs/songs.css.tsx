@@ -4,7 +4,7 @@ export const SongsComponent = styled.section`
     display: grid;
     grid-template-rows: repeat(14, 59px);
     margin-left: 10px;
-    padding-right: 10px;
+    padding-right: 20px;
     align-items: center;
     z-index: 1;
 
@@ -21,7 +21,6 @@ export const SongsComponent = styled.section`
         border: none;
         display: flex;
         justify-self: flex-end;
-        margin-right: 30px;
         cursor: pointer;
     }
 
