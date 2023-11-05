@@ -10,19 +10,14 @@ const Song = (obj: {song: ISong, colorInterface: INumberColor}) => {
 
     return(
         <SongComponent>
-            <Number index={obj.song.index} color={obj.colorInterface} />
+            <Number index={index} color={obj.colorInterface} />
 
             <div className="group-artist-info">
                 <h2 className="bold">{song_name}</h2>
                 <h2>{song_artist}</h2>
             </div>
 
-            {/* <div>
-                <h2>{song_name}</h2>
-                <h2>{song_artist}</h2>
-            </div>
-
-            <img src={img} alt="artist image"/> */}
+            <img src={img} alt="artist image" className="album-cover-img"/> 
         </SongComponent>
     )
 }
