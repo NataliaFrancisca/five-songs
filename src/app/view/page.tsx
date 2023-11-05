@@ -1,61 +1,59 @@
 'use client';
-import Circle from "../components/circle/circle";
+import { getThemeCookie } from "@/storage/theme";
+import Songs from "../components/songs/songs";
 import { ViewComponent } from "./view.css";
+import { useEffect, useState } from "react";
+import { IThemeJSON } from "@/ts/interface";
 
 const View = () => {
+    const [currentViewTheme, setCurrentViewTheme] = useState<IThemeJSON>();
 
-    return(
-        <ViewComponent>
-            <section id="lines">
-                <div className="line" />
-                <div className="line" />
-                <div className="line" />
-                <div className="line" />
-                <div className="line" />
-                <div className="line" />
-                <div className="line" />
-                <div className="line" />
-                <div className="line" />
-                <div className="line" />
-                <div className="line" />
-                <div className="line" />
-                <div className="line" />
-                <div className="line" />
-            </section>
+    const onUpdateView = () => {
+        const viewThemeResult = getThemeCookie();
+        setCurrentViewTheme(viewThemeResult);
+    }
 
-            <section className="column" id="column-1">
-                <Circle />
-                <Circle />
-                <Circle />
-                <Circle />
-                <Circle />
-                <Circle />
-                <Circle />
-                <Circle />
-                <Circle />
-                <Circle />
-                <Circle />
-                <Circle />
-                <Circle />
-                <Circle />
-            </section>
+    useEffect(() => {
+        onUpdateView();
+    },[])
 
-            <section className="column" id="column-2">
-                <br />
-                <p>NATALIAS TOP FIVE</p>
-                <br />
-                <h1>DA LUA</h1>
-                <br />
-                <h1>MERCADO</h1>
-                <br />
-                <h1>ANOTHER LOVE</h1>
-                <br />
-                <h1>MONACO</h1>
-                <br />
-                <h1>CHOROJO</h1>
-                <br />
-            </section>
+    return( currentViewTheme &&
+        <ViewComponent $theme={currentViewTheme.theme}>
+            <div id="lines">
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+            </div>
 
+            <div id="punched-paper-column">
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+            </div>
+  
+            {currentViewTheme && <Songs viewTheme={currentViewTheme.theme} updateView={onUpdateView} />}
         </ViewComponent>
     )
 }
