@@ -1,7 +1,6 @@
 'use client';
 import StyledComponentsRegistry from "../lib/registry";
 import "../styles/font.css";
-
 import { GlobalStyle } from "@/styles/global.css";
 export default function RootLayout(props: React.PropsWithChildren) {
   return (
