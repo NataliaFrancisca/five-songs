@@ -2,11 +2,16 @@ import styled from "styled-components";
 
 export const SongsComponent = styled.section`
     display: grid;
-    grid-template-rows: repeat(14, 59px);
+    grid-template-rows: repeat(14, 1fr);
     margin-left: 10px;
     padding-right: 20px;
     align-items: center;
     z-index: 1;
+
+    aside{
+        display: flex;
+        justify-content: space-between;
+    }
 
     h1{
         font-family: var(--font-londrina);
