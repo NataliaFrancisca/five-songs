@@ -3,37 +3,36 @@ import styled from "styled-components";
 
 export const ViewComponent = styled.main<{ $theme?: IViewTheme; }>`
     background-color: ${props => props.$theme?.paper_color};
-    min-height: 100vh;
+    height: 100vh;
     height: auto;
     display: grid;
     position: relative;
     color: ${props => props.$theme?.text_color};
-
-    grid-template-columns: 78px auto;
+    grid-template-columns: 80px auto;
+    transition: all ease-in-out .5s;
 
     #lines{
         display: grid;
         position: absolute;
-        grid-template-rows: repeat(14, 59px);
+        grid-template-rows: repeat(14, 60px);
         width: 100%;
 
-        div{
+        span{
             height: 100%;
             border-bottom: solid 2px ${props => props.$theme?.paper_line_color ? props.$theme.paper_line_color : 'rgba(26, 27, 28, 0.70)'}
         }
 
-        div:last-child{
+        span:last-child{
             border-bottom: none;
         }
     }
 
     #punched-paper-column{
         display: grid;
-        grid-template-rows: repeat(14, 59px);
+        grid-template-rows: repeat(14, 60px);
         border-right: 2px solid rgba(194, 45, 45, 0.57);
 
-
-        & div{
+        & span{
             width: 24px;
             height: 24px;
             margin: 18px 30px 18px 30px;
