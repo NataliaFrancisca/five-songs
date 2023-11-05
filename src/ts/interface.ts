@@ -21,3 +21,9 @@ export interface IViewTheme{
         stroke: string
     }
 }
+
+
+export interface IThemeJSON{
+    name: string,
+    theme: IViewTheme
+}
