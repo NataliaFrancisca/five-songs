@@ -2,10 +2,11 @@
 import { getThemeCookie } from "@/storage/theme";
 import Songs from "../components/songs/songs";
 import { ViewComponent } from "./view.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IThemeJSON } from "@/ts/interface";
 
 const View = () => {
+    const viewRef = useRef<HTMLElement | null>(null);
     const [currentViewTheme, setCurrentViewTheme] = useState<IThemeJSON>();
 
     const onUpdateView = () => {
@@ -18,7 +19,7 @@ const View = () => {
     },[])
 
     return( currentViewTheme &&
-        <ViewComponent $theme={currentViewTheme.theme}>
+        <ViewComponent $theme={currentViewTheme.theme} ref={viewRef}>
             <div id="lines">
                 <span />
                 <span />
@@ -50,10 +51,9 @@ const View = () => {
                 <span />
                 <span />
                 <span />
-                <span />
             </div>
   
-            {currentViewTheme && <Songs viewTheme={currentViewTheme.theme} updateView={onUpdateView} />}
+            {currentViewTheme && <Songs viewTheme={currentViewTheme.theme} updateView={onUpdateView} viewRef={viewRef.current}/>}
         </ViewComponent>
     )
 }
