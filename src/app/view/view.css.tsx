@@ -14,7 +14,7 @@ export const ViewComponent = styled.main<{ $theme?: IViewTheme; }>`
     #lines{
         display: grid;
         position: absolute;
-        grid-template-rows: repeat(14, 60px);
+        grid-template-rows: repeat(13, 70px);
         width: 100%;
 
         span{
@@ -29,7 +29,7 @@ export const ViewComponent = styled.main<{ $theme?: IViewTheme; }>`
 
     #punched-paper-column{
         display: grid;
-        grid-template-rows: repeat(14, 60px);
+        grid-template-rows: repeat(13, 70px);
         border-right: 2px solid rgba(194, 45, 45, 0.57);
 
         & span{

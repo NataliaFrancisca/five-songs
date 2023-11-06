@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const SongsComponent = styled.section`
     display: grid;
-    grid-template-rows: repeat(14, 1fr);
+    grid-template-rows: repeat(13, 70px);
     margin-left: 10px;
     padding-right: 20px;
     align-items: center;
@@ -11,6 +11,7 @@ export const SongsComponent = styled.section`
     aside{
         display: flex;
         justify-content: space-between;
+        align-items: center;
     }
 
     h1{
