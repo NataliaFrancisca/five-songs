@@ -1,20 +1,39 @@
+'use client';
+import { htmlToImageConvert } from "@/convert-image";
 import Song from "../song/song";
 import SwitchColor from "../switch-theme/switch-theme";
 import { SongsComponent } from "./songs.css";
 import { IViewTheme } from "@/ts/interface";
+import { useState } from "react";
 
-const Songs = (obj: {viewTheme: IViewTheme, updateView: () => void}) => {
+const Songs = (obj: {viewTheme: IViewTheme, updateView: () => void, viewRef: HTMLElement | null}) => {
+    const [hiddenAside, setHiddenAside] = useState(false);
+
+
+    const convertHtmlToImage = () => {
+        setHiddenAside(true);
+        htmlToImageConvert(obj.viewRef);
+
+        setTimeout(() => {
+            setHiddenAside(false);
+        },2000)
+    }
+
     return(
         <SongsComponent>
 
             <aside>
-                <SwitchColor updateView={obj.updateView} />
-                
-                <button>
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10 15L3.75 8.75L5.5 6.9375L8.75 10.1875V0H11.25V10.1875L14.5 6.9375L16.25 8.75L10 15ZM2.5 20C1.8125 20 1.22396 19.7552 0.734375 19.2656C0.244792 18.776 0 18.1875 0 17.5V13.75H2.5V17.5H17.5V13.75H20V17.5C20 18.1875 19.7552 18.776 19.2656 19.2656C18.776 19.7552 18.1875 20 17.5 20H2.5Z" fill={obj.viewTheme.text_color}/>
-                    </svg>
-                </button>
+                {!hiddenAside && ( 
+                    <>
+                    <SwitchColor updateView={obj.updateView} />
+                    
+                        <button onClick={() => convertHtmlToImage()}>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10 15L3.75 8.75L5.5 6.9375L8.75 10.1875V0H11.25V10.1875L14.5 6.9375L16.25 8.75L10 15ZM2.5 20C1.8125 20 1.22396 19.7552 0.734375 19.2656C0.244792 18.776 0 18.1875 0 17.5V13.75H2.5V17.5H17.5V13.75H20V17.5C20 18.1875 19.7552 18.776 19.2656 19.2656C18.776 19.7552 18.1875 20 17.5 20H2.5Z" fill={obj.viewTheme.text_color}/>
+                            </svg>
+                        </button>
+                    </>
+                )}
             </aside>
            
 

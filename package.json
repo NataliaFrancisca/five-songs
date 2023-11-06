@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "html-to-image": "^1.11.11",
     "next": "14.0.1",
     "nookies": "^2.5.2",
     "react": "^18",
