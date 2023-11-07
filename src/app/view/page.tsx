@@ -7,7 +7,7 @@ import { getThemeCookie, setThemeCookie } from "@/storage/theme";
 
 const View = () => {
     const user_theme = getThemeCookie();
-    const [currentCarouselElement, setCurrentCarouselElement] = useState(user_theme.id);
+    const [currentCarouselElement, setCurrentCarouselElement] = useState(user_theme.id ? user_theme.id : 0);
 
     const onPrev = () => {
         if(currentCarouselElement == 0){
