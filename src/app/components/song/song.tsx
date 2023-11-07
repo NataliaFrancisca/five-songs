@@ -16,8 +16,6 @@ const Song = (obj: {song: ISong, colorInterface: INumberColor}) => {
                 <h2 className="bold">{song_name}</h2>
                 <h2>{song_artist}</h2>
             </div>
-
-            <img src={img} alt="artist image" className="album-cover-img"/> 
         </SongComponent>
     )
 }
