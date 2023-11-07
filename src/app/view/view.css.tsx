@@ -1,43 +1,63 @@
-import { IViewTheme } from "@/ts/interface";
 import styled from "styled-components";
 
-export const ViewComponent = styled.main<{ $theme?: IViewTheme; }>`
-    background-color: ${props => props.$theme?.paper_color};
-    height: 100vh;
+export const ViewComponent = styled.main`
+    min-height: 100vh;
     height: auto;
-    display: grid;
-    position: relative;
-    color: ${props => props.$theme?.text_color};
-    grid-template-columns: 80px auto;
-    transition: all ease-in-out .5s;
+    background-color: var(--black-color);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
 
-    #lines{
-        display: grid;
-        position: absolute;
-        grid-template-rows: repeat(13, 70px);
+    #btn-download{
+        background-color: transparent;
+        width: min-content;
+        border: none;
+
+        display: flex;
+        align-self: flex-end;
+    }
+
+    #carousel{
+        display: flex;
+        align-self: center;
+        height: auto;
         width: 100%;
+        gap: 10px;
 
-        span{
-            height: 100%;
-            border-bottom: solid 2px ${props => props.$theme?.paper_line_color ? props.$theme.paper_line_color : 'rgba(26, 27, 28, 0.70)'}
+        button{
+            background-color: transparent;
+            cursor: pointer;
+            border: none;
+            height: min-content;
+            margin: auto;
         }
 
-        span:last-child{
-            border-bottom: none;
+        button svg{
+            fill: #FFFFFF;
+        }
+
+        button:disabled svg{
+            fill: #666666;
+            /* background-color: #666666; */
         }
     }
 
-    #punched-paper-column{
-        display: grid;
-        grid-template-rows: repeat(13, 70px);
-        border-right: 2px solid rgba(194, 45, 45, 0.57);
-
-        & span{
-            width: 24px;
-            height: 24px;
-            margin: 18px 30px 18px 30px;
+    #carousel-mark{
+        display: flex;
+        gap: 10px;
+        align-self: center;
+        
+        span{
+            height: 10px;
+            width: 10px;
+            background-color: #666666;
             border-radius: 50%;
-            background-color: ${props => props.$theme?.punched_color};
+        }
+
+        span.current-page{
+            background-color: #FFFFFF;
         }
     }
 `
