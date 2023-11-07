@@ -4,7 +4,6 @@ export const SongComponent = styled.article`
     display: flex;
     align-items: center;
     width: 100%;
-    position: relative;
 
     .group-artist-info{
         margin-left: 20px;
