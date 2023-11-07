@@ -21,9 +21,16 @@ export interface IViewTheme{
         stroke: string
     }
 }
-
-
-export interface IThemeJSON{
-    name: string,
-    theme: IViewTheme
+export interface IPaperStyle{
+    id: number,
+    title: string,
+    style: {
+        punched_color: string,
+        paper_color: string,
+        text_color: string,
+        number_color: {
+            fill: string
+            stroke:string
+        }
+    }
 }
