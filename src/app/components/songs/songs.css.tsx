@@ -35,10 +35,11 @@ export const SongsComponent = styled.section`
     @media screen and (max-width: 600px){
     }
 `
+
+
 export const ImageElement = styled.div<{$url: string, $stickerColor: string}>`
     width: 165px;
     height: 148px;
-    transform: rotate(-4.214deg);
     object-fit: cover;
     box-shadow: 2px 1px 1px 0px rgba(0, 0, 0, 0.25);
     justify-self: center;
@@ -56,8 +57,6 @@ export const ImageElement = styled.div<{$url: string, $stickerColor: string}>`
         width: 63px;
         flex-shrink: 0;
         position: relative;
-
-        fill: red;
     }
 
     &::before{
@@ -70,5 +69,15 @@ export const ImageElement = styled.div<{$url: string, $stickerColor: string}>`
         top: 128px;
         left: 70px;
         transform: rotate(-1.613deg);
+    }
+
+    @media screen and (max-width: 376px){
+        width: 145px;
+
+        &::after{
+            top: 128px;
+            left: 40px;
+            transform: rotate(-1.613deg);
+        }
     }
 `
