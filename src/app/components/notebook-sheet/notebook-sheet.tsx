@@ -4,7 +4,6 @@ import { IPaperStyle } from "@/ts/interface";
 import Songs from "../songs/songs";
 
 const NotebookSheet = (props: {paperStyle: IPaperStyle }) => {
-    console.log(props.paperStyle);
 
     return(
         <NotebookSheetComponent $paperTheme={props.paperStyle.style}>
