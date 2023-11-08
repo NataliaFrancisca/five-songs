@@ -2,11 +2,12 @@ import { IPaperStyle } from "@/ts/interface";
 import { parseCookies, setCookie } from "nookies";
 
 function setThemeCookie(theme: IPaperStyle){
-    
-    setCookie(null, 'USER_THEME', JSON.stringify(theme), {
-        maxAge: 86400 * 7,
-        path: '/'
-    });
+    if(theme){
+        setCookie(null, 'USER_THEME', JSON.stringify(theme), {
+            maxAge: 86400 * 7,
+            path: '/'
+        });
+    }
 }
 
 
