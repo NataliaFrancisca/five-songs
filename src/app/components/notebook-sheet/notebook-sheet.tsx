@@ -1,7 +1,7 @@
-import PaperBackground from "@/app/ui/paper-background/paper-background";
 import { NotebookSheetComponent } from "./notebook-sheet.css";
 import { IPaperStyle } from "@/ts/interface";
 import Songs from "../songs/songs";
+import PaperBackground from "@/app/ui/paper-background/paper-background";
 
 const NotebookSheet = (props: {paperStyle: IPaperStyle }) => {
 
