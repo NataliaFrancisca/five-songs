@@ -1,33 +1,37 @@
 'use client';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ViewComponent } from "./view.css";
-import NotebookSheet from "../components/notebook-sheet/notebook-sheet";
 import { PAPER_THEME } from "@/styles/theme.css";
 import { getThemeCookie, setThemeCookie } from "@/storage/theme";
 
+import NotebookSheet from "../components/notebook-sheet/notebook-sheet";
+
+const user_theme = getThemeCookie();
+
 const View = () => {
-    const user_theme = getThemeCookie();
-    const [currentCarouselElement, setCurrentCarouselElement] = useState(user_theme.id ? user_theme.id : 0);
+    const [currentCarouselElement, setCurrentCarouselElement] = useState(user_theme.id);
 
     const onPrev = () => {
         if(currentCarouselElement == 0){
+            setCurrentCarouselElement(PAPER_THEME.length - 1);
+            setThemeCookie(PAPER_THEME[PAPER_THEME.length - 1]);
             return;
         }
 
-        setCurrentCarouselElement(currentCarouselElement - 1);
+        setCurrentCarouselElement((prev:number) => prev - 1);
         setThemeCookie(PAPER_THEME[currentCarouselElement - 1]);
     }
 
     const onNext = () => {
         if(currentCarouselElement == PAPER_THEME.length - 1){
+            setCurrentCarouselElement(0);
+            setThemeCookie(PAPER_THEME[0]);
             return;
         }
 
-        setCurrentCarouselElement(currentCarouselElement + 1);
+        setCurrentCarouselElement((prev:number) => prev + 1);
         setThemeCookie(PAPER_THEME[currentCarouselElement + 1]);
     }
-
-    console.log(currentCarouselElement);
 
     return(
         <ViewComponent>
@@ -38,7 +42,7 @@ const View = () => {
             </button>
 
             <section id="carousel">
-                <button onClick={() => onPrev()} disabled={currentCarouselElement == 0}>
+                <button onClick={() => onPrev()}>
                     <svg width="12" height="21" viewBox="0 0 12 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M9.99955 0.0167977L11.7913 1.7749L3.64458 10.0775L11.9471 18.2242L10.189 20.0159L0.094736 10.1111L9.99955 0.0167977Z"/>
                     </svg>
@@ -46,7 +50,7 @@ const View = () => {
                 
                 <NotebookSheet paperStyle={PAPER_THEME[currentCarouselElement]} />
 
-                <button onClick={() => onNext()} disabled={currentCarouselElement == (PAPER_THEME.length - 1)}>
+                <button onClick={() => onNext()}>
                     <svg width="12" height="20" viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1.775 20L0 18.225L8.225 10L0 1.775L1.775 0L11.775 10L1.775 20Z"/>
                     </svg>
