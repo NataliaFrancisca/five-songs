@@ -4,8 +4,11 @@ import { PAPER_THEME } from "@/styles/theme.css";
 import { getThemeCookie, setThemeCookie } from "@/storage/theme";
 import Image from "next/image";
 import Carousel from "../components/carousel/carousel";
+import { useEffect, useState } from "react";
+import { IPaperStyle } from "@/ts/interface";
 
 const View = () => {
+    const [currentElementStyle, setCurrentElementStyle] = useState<IPaperStyle>(); 
     
     const getTheme = () => {
         const response = getThemeCookie();
@@ -18,7 +21,10 @@ const View = () => {
         }
     }
 
-    const response = getTheme();
+    useEffect(() => {
+        const response = getTheme();
+        setCurrentElementStyle(response);
+    },[])
 
     return(
         <ViewComponent>
@@ -26,7 +32,7 @@ const View = () => {
                 <Image src="icon/download.svg" alt="icon download" width={20} height={20}/>
             </button>
             
-            {response && <Carousel currentElement={response.id} />}
+            {currentElementStyle && <Carousel currentElement={currentElementStyle.id} />}
         
         </ViewComponent>
     )
