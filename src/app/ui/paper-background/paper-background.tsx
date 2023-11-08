@@ -3,6 +3,10 @@ import styled from "styled-components";
 const PaperBackgroundComponent = styled.div`
     display: grid;
     grid-template-columns: 80px auto;
+
+    @media screen and (max-width: 376px){
+        grid-template-columns: 60px auto;
+    }
 `
 
 const PaperBackground = () => {

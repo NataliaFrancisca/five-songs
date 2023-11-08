@@ -18,7 +18,7 @@ export const PAPER_THEME = [
         title: 'BLACK',
         style: {
             punched_color: '#FDF6EC',
-            paper_color: '#16120F',
+            paper_color: '#0d0d0c',
             paper_line_color: 'rgba(253, 246, 236, 0.60)',
             text_color: '#FDF6EC',
             number_color: {

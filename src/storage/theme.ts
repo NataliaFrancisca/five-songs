@@ -1,12 +1,15 @@
+import { PAPER_THEME } from "@/styles/theme.css";
 import { IPaperStyle } from "@/ts/interface";
-import { parseCookies, setCookie } from "nookies";
+import { parseCookies, setCookie} from "nookies";
+import nookies from 'nookies'
 
 function setThemeCookie(theme: IPaperStyle){
-    
-    setCookie(null, 'USER_THEME', JSON.stringify(theme), {
-        maxAge: 86400 * 7,
-        path: '/'
-    });
+    if(theme){
+        setCookie(null, 'USER_THEME', JSON.stringify(theme), {
+            maxAge: 86400 * 7,
+            path: '/'
+        });
+    }
 }
 
 
@@ -14,9 +17,7 @@ function getThemeCookie(){
     const { USER_THEME } = parseCookies();
 
     if(USER_THEME){
-        const result = JSON.parse(USER_THEME);
-        console.log('result', result);
-        return result;
+        return JSON.parse(USER_THEME);
     } else{
         console.log("Theme not found.");
         return false;

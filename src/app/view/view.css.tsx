@@ -3,18 +3,25 @@ import styled from "styled-components";
 export const ViewComponent = styled.main`
     min-height: 100vh;
     height: auto;
-    background-color: var(--black-color);
+    background-color: #000000;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 20px;
+    padding: 10px;
     justify-content: center;
 
-    #btn-download{
+    button{
+        cursor: pointer;
         background-color: transparent;
-        width: min-content;
         border: none;
+        height: min-content;
 
+        :hover{
+            filter: brightness(80%);
+        }
+    }
+
+    #btn-download{
         display: flex;
         align-self: flex-end;
     }
@@ -23,24 +30,11 @@ export const ViewComponent = styled.main`
         display: flex;
         align-self: center;
         height: auto;
-        width: 100%;
         gap: 10px;
+        width: 100%;
 
-        button{
-            background-color: transparent;
-            cursor: pointer;
-            border: none;
-            height: min-content;
-            margin: auto;
-        }
-
-        button svg{
-            fill: #FFFFFF;
-        }
-
-        button:disabled svg{
-            fill: #666666;
-            /* background-color: #666666; */
+        & button{
+            margin: auto 0;
         }
     }
 

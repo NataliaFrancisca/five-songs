@@ -10,7 +10,6 @@ export const NotebookSheetComponent = styled.section<{$paperTheme?: IViewTheme}>
     display: grid;
     grid-template-columns: 80px auto;
     border-radius: 4px;
-    box-shadow: 0px 0px 3px 1px ${props => props.$paperTheme?.number_color.fill};
     
     #paper-lines{
         display: grid;
@@ -36,9 +35,13 @@ export const NotebookSheetComponent = styled.section<{$paperTheme?: IViewTheme}>
         & span{
             width: 24px;
             height: 24px;
-            margin: 18px 30px 18px 30px;
+            margin: auto;
             border-radius: 50%;
             background-color: ${props => props.$paperTheme?.punched_color};
         }
+    }
+
+    @media screen and (max-width: 376px){
+        grid-template-columns: 60px auto;
     }
 `
