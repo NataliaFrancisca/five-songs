@@ -24,6 +24,7 @@ export const ViewComponent = styled.main`
     #btn-download{
         display: flex;
         align-self: flex-end;
+        margin-right: 20px;
     }
 
     #carousel{
@@ -35,6 +36,7 @@ export const ViewComponent = styled.main`
 
         & button{
             margin: auto 0;
+            z-index: 111;
         }
     }
 
