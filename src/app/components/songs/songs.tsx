@@ -3,16 +3,6 @@ import Song from "../song/song";
 import { ImageElement, SongsComponent } from "./songs.css";
 import { IViewTheme } from "@/ts/interface";
 const Songs = (obj: {viewTheme: IViewTheme}) => {
-
-    // const convertHtmlToImage = () => {
-    //     setHiddenAside(true);
-    //     htmlToImageConvert(obj.viewRef);
-
-    //     setTimeout(() => {
-    //         setHiddenAside(false);
-    //     },2000)
-    // }
-
     return(
         <SongsComponent>
 

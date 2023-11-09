@@ -8,6 +8,7 @@ export const SongsComponent = styled.section`
     padding-right: 20px;
     align-items: center;
     z-index: 11;
+    width: 100%;
 
     aside{
         display: flex;

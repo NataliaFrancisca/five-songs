@@ -1,7 +1,5 @@
-import { PAPER_THEME } from "@/styles/theme.css";
 import { IPaperStyle } from "@/ts/interface";
 import { parseCookies, setCookie} from "nookies";
-import nookies from 'nookies'
 
 function setThemeCookie(theme: IPaperStyle){
     if(theme){
