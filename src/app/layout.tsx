@@ -1,4 +1,5 @@
 'use client';
+import { RefContextProvider } from "@/context/ref-context";
 import StyledComponentsRegistry from "../lib/registry";
 import "../styles/font.css";
 import { GlobalStyle } from "@/styles/global.css";
@@ -11,7 +12,9 @@ export default function RootLayout(props: React.PropsWithChildren) {
       <body>
         <StyledComponentsRegistry>
           <GlobalStyle />
-          {props.children}
+          <RefContextProvider>
+            {props.children}
+          </RefContextProvider>
         </StyledComponentsRegistry>
       </body>
     </html>
