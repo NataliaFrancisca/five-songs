@@ -31,11 +31,12 @@ export const NotebookSheetComponent = styled.section<{$paperTheme?: IViewTheme}>
         display: grid;
         grid-template-rows: repeat(10, 68px);
         border-right: 2px solid rgba(194, 45, 45, 0.57);
+        align-items: center;
+        justify-content: center;
 
         & span{
             width: 24px;
             height: 24px;
-            margin: auto;
             border-radius: 50%;
             background-color: ${props => props.$paperTheme?.punched_color};
         }
