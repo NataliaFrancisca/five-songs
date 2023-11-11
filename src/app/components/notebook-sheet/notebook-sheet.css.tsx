@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const NotebookSheetComponent = styled.section<{$paperTheme?: IViewTheme}>`
     background-color: ${props => props.$paperTheme?.paper_color};
-    color: ${props => props.$paperTheme?.text_color};
+    color: ${props => props.$paperTheme?.secondary_color};
     width: 100%;
     transition: all ease-in .2s;
     position: relative;
@@ -38,7 +38,7 @@ export const NotebookSheetComponent = styled.section<{$paperTheme?: IViewTheme}>
             width: 24px;
             height: 24px;
             border-radius: 50%;
-            background-color: ${props => props.$paperTheme?.punched_color};
+            background-color: ${props => props.$paperTheme?.secondary_color};
         }
     }
 
