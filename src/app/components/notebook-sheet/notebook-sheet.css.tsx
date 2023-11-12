@@ -1,9 +1,9 @@
-import { IViewTheme } from "@/ts/interface";
+import { IPaperStyle } from "@/ts/interface";
 import styled from "styled-components";
 
-export const NotebookSheetComponent = styled.section<{$paperTheme?: IViewTheme}>`
-    background-color: ${props => props.$paperTheme?.paper_color};
-    color: ${props => props.$paperTheme?.secondary_color};
+export const NotebookSheetComponent = styled.section<{$paperTheme?: IPaperStyle}>`
+    background-color: ${props => props.$paperTheme?.color};
+    color: #1A1B1C;
     width: 100%;
     transition: all ease-in .2s;
     position: relative;
@@ -14,12 +14,12 @@ export const NotebookSheetComponent = styled.section<{$paperTheme?: IViewTheme}>
     #paper-lines{
         display: grid;
         position: absolute;
-        grid-template-rows: repeat(10, 68px);
+        grid-template-rows: repeat(9, 68px);
         width: 100%;
 
         span{
             height: 100%;
-            border-bottom: solid 2px ${props => props.$paperTheme?.paper_line_color ? props.$paperTheme.paper_line_color : 'rgba(26, 27, 28, 0.70)'}
+            border-bottom: solid 2px rgba(26, 27, 28, 0.70);
         }
 
         span:last-child{
@@ -29,7 +29,7 @@ export const NotebookSheetComponent = styled.section<{$paperTheme?: IViewTheme}>
 
     #punched-paper-column{
         display: grid;
-        grid-template-rows: repeat(10, 68px);
+        grid-template-rows: repeat(9, 68px);
         border-right: 2px solid rgba(194, 45, 45, 0.57);
         align-items: center;
         justify-content: center;
@@ -38,7 +38,7 @@ export const NotebookSheetComponent = styled.section<{$paperTheme?: IViewTheme}>
             width: 24px;
             height: 24px;
             border-radius: 50%;
-            background-color: ${props => props.$paperTheme?.secondary_color};
+            background-color: #1A1B1C;
         }
     }
 
