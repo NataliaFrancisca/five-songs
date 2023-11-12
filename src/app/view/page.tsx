@@ -12,8 +12,8 @@ const View = () => {
     const [currentElementStyle, setCurrentElementStyle] = useState<IPaperStyle>(); 
     const { refContext } = useRefContext();
 
-    const convertHtmlToImage = () => {
-        htmlToImageConvert(refContext);
+    const convertHtmlToImage = async() => {
+        await htmlToImageConvert(refContext);
     }
 
     useEffect(() => {

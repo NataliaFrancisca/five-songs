@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
 export const SongComponent = styled.article`
-    display: flex;
+    display: grid;
+    grid-template-columns: 30px auto;
     align-items: center;
     width: 100%;
+    margin-left: 10px;
+    gap: 20px;
 
     .group-artist-info{
-        margin-left: 20px;
 
         h2{
             font-size: 20px;
@@ -19,19 +21,6 @@ export const SongComponent = styled.article`
             font-weight: bold;
         }
     }
-
-    .album-cover-img{
-        display: flex;
-        width: 80px;
-        height: 100%;
-        margin-left: 28px;
-        position: absolute;
-        right: 0px;
-        object-fit: cover;
-        border-radius: 4px;
-        box-shadow: 2px 1px 6px -3px rgba(10,10,10,.8);
-    }
-
 
     @media screen and (max-width: 600px){
         .group-artist-info{

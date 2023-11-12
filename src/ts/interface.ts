@@ -11,26 +11,18 @@ export interface ISong{
 }
 
 export interface IViewTheme{
-    punched_color: string,
-    paper_color: string,
-    paper_line_color?: string,
-    text_color: string,
-
-    number_color: {
-        fill: string,
-        stroke: string
-    }
+    primary_color: string;
+    secondary_color: string;
+    text_color?:  string;
+    paper_color: string;
+    paper_line_color?: string;
+    fill: string;
+    stroke: string;
 }
+
+
 export interface IPaperStyle{
     id: number,
     title: string,
-    style: {
-        punched_color: string,
-        paper_color: string,
-        text_color: string,
-        number_color: {
-            fill: string
-            stroke:string
-        }
-    }
+    style: IViewTheme
 }
