@@ -8,11 +8,16 @@ export const SongComponent = styled.article`
     margin-left: 10px;
     gap: 20px;
 
-    .group-artist-info{
+    h1{
+        font-size: 58px;
+        font-family: var(--font-spline-sans-mono);
+        font-weight: bold;
+        color: #1A1B1C;
+    }
 
+    .group-artist-info{
         h2{
-            font-size: 20px;
-            font-family: var(--font-londrina);
+            font-size: 14px;
             font-weight: 300;
         }
 
@@ -25,7 +30,7 @@ export const SongComponent = styled.article`
     @media screen and (max-width: 600px){
         .group-artist-info{
             h2{
-                font-size: 18px;
+                font-size: 16px;
             }
         }
     }

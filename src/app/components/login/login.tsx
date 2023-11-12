@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 'use client';
 import { useRouter } from "next/navigation";
 import { LoginComponent } from "./login.css";
@@ -13,12 +12,11 @@ const Login = () => {
     return(
         <LoginComponent>
             <article className="box-login">
-                <img src="svg/five-songs.svg" alt="title" />
-                <div className="message-login">
-                    <p>discover your top</p>
-                    <img src="svg/number-five.svg" alt="number 5" />
-                </div>
-                <button onClick={() => onNavigation()}>try with Spotify</button>
+                <h1>FIVE <br/> SONGS</h1>
+                
+                <h2>discover your top <span id="subtitle_styled">5</span></h2>
+          
+                <button onClick={() => onNavigation()}>TRY WITH SPOTIFY</button>
             </article>
         </LoginComponent>
     )

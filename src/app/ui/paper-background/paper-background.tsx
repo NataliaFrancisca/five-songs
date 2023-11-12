@@ -22,10 +22,8 @@ const PaperBackground = () => {
                 <span />
                 <span />
                 <span />
-                <span />
             </div>
             <div id="paper-lines">              
-                <span />
                 <span />
                 <span />
                 <span />

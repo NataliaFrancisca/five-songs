@@ -16,9 +16,9 @@ const NotebookSheet = (props: {paperStyle: IPaperStyle }) => {
     },[])
 
     return(
-        <NotebookSheetComponent $paperTheme={props.paperStyle.style} ref={ref}>
+        <NotebookSheetComponent $paperTheme={props.paperStyle} ref={ref}>
             <PaperBackground />
-            <Songs viewTheme={props.paperStyle.style}/>
+            <Songs />
         </NotebookSheetComponent>
     )
 }
