@@ -2,7 +2,7 @@ import { generateRandomString, sha256, base64encode } from "./crypto/crypto";
 
 async function loginSpotify(){
     const client_id = process.env.NEXT_PUBLIC_CLIENT_ID;
-    const redirect_uri = "http://localhost:3000/view";
+    const redirect_uri = process.env.NEXT_PUBLIC_URI_REDIRECT;
 
     const scope = 'user-read-private user-read-email user-top-read';
     const authUrl = new URL("https://accounts.spotify.com/authorize")
@@ -17,7 +17,7 @@ async function loginSpotify(){
         localStorage.removeItem('USER_TOKEN');
     }
 
-    if(client_id){
+    if(client_id && redirect_uri){
         const params =  {
             response_type: 'code',
             client_id: client_id,
