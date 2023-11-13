@@ -7,7 +7,7 @@ export const ViewComponent = styled.main`
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 10px;
+    padding: 0 10px;
     justify-content: center;
 
     button{
