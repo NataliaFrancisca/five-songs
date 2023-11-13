@@ -17,8 +17,9 @@ export const SongComponent = styled.article`
 
     .group-artist-info{
         h2{
-            font-size: 14px;
+            font-size: 18px;
             font-weight: 300;
+            flex-wrap: wrap;
         }
 
 
@@ -31,6 +32,14 @@ export const SongComponent = styled.article`
         .group-artist-info{
             h2{
                 font-size: 16px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 400px){
+        .group-artist-info{
+            h2{
+                font-size: 14px;
             }
         }
     }
