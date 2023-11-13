@@ -2,7 +2,7 @@
 import { NotebookSheetComponent } from "./notebook-sheet.css";
 import { IPaperStyle } from "@/ts/interface";
 import Songs from "../songs/songs";
-import PaperBackground from "@/app/ui/paper-background/paper-background";
+import PaperBackground from "@/app/ui/paper-background";
 import { useEffect, useRef } from "react";
 import { useRefContext } from "@/context/ref-context";
 
@@ -13,7 +13,7 @@ const NotebookSheet = (props: {paperStyle: IPaperStyle }) => {
 
     useEffect(() => {
         setRefContext(ref.current);
-    },[])
+    },[setRefContext])
 
     return(
         <NotebookSheetComponent $paperTheme={props.paperStyle} ref={ref}>
