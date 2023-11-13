@@ -2,7 +2,6 @@ export interface ISong{
     index: number;
     song_name: string;
     song_artist: string;
-    img: string;
 }
 
 export interface IPaperStyle{

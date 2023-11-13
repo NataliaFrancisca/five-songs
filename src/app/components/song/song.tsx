@@ -2,7 +2,7 @@ import { ISong } from "@/ts/interface";
 import { SongComponent } from "./song.css";
 
 const Song = (obj: {song: ISong}) => {
-    const {index, song_name, song_artist, img} = obj.song;
+    const {index, song_name, song_artist} = obj.song;
 
     return(
         <SongComponent>

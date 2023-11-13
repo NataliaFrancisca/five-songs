@@ -14,7 +14,7 @@ export const SongsComponent = styled.section`
     }
 
     h1#user-title{
-        font-size: 28px;
+        font-size: 20px;
         font-family: var(--font-spline-sans-mono);
         font-weight: bold;
         color: #1A1B1C;
