@@ -5,9 +5,9 @@ export async function getUserToken(){
     let code = urlParams.get('code');
 
     const client_id = process.env.NEXT_PUBLIC_CLIENT_ID;
-    const redirect_uri = "http://localhost:3000/view";
+    const redirect_uri = process.env.NEXT_PUBLIC_URI_REDIRECT;
 
-    if(client_id && code_verifier_storage && code){
+    if(client_id && redirect_uri && code_verifier_storage && code){
         const payload = {
             method: 'POST',
             headers: {
