@@ -1,12 +1,11 @@
 'use client';
-import { useRouter } from "next/navigation";
 import { LoginComponent } from "./login.css";
+import loginSpotify from "@/auth/login";
 
 const Login = () => {
-    const router = useRouter();
 
-    const onNavigation = () => {
-        router.push("/view");
+    const onLogin = async() => {
+        await loginSpotify();
     }
 
     return(
@@ -16,7 +15,7 @@ const Login = () => {
                 
                 <h2>discover your top <span id="subtitle_styled">5</span></h2>
           
-                <button onClick={() => onNavigation()}>TRY WITH SPOTIFY</button>
+                <button onClick={() => onLogin()}>TRY WITH SPOTIFY</button>
             </article>
         </LoginComponent>
     )
