@@ -8,7 +8,7 @@ export const NotebookSheetComponent = styled.section<{$paperTheme?: IPaperStyle}
     transition: all ease-in .2s;
     position: relative;
     display: grid;
-    grid-template-columns: 80px auto;
+    grid-template-columns: 60px auto;
     border-radius: 4px;
     
     #paper-lines{
@@ -40,9 +40,5 @@ export const NotebookSheetComponent = styled.section<{$paperTheme?: IPaperStyle}
             border-radius: 50%;
             background-color: #1A1B1C;
         }
-    }
-
-    @media screen and (max-width: 376px){
-        grid-template-columns: 60px auto;
     }
 `
