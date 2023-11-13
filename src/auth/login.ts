@@ -13,6 +13,10 @@ async function loginSpotify(){
     const hashed = await sha256(codeVerifier)
     const codeChallenge = base64encode(hashed);
 
+    if(localStorage.getItem("USER_TOKEN")){
+        localStorage.removeItem('USER_TOKEN');
+    }
+
     if(client_id){
         const params =  {
             response_type: 'code',
