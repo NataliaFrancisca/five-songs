@@ -3,7 +3,7 @@ import { UseToken } from "./useToken";
 
 export const UseProfile = () => {
     const [userName, setUserName] = useState<string>();
-    const [listSongs, setListSongs] = useState();
+    const [listSongs, setListSongs] = useState([]);
 
     const token = UseToken();
 
