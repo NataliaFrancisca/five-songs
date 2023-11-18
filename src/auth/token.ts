@@ -31,7 +31,7 @@ export async function getUserToken(){
     }
 }
 
-export async function getToken():Promise<string | undefined>{ 
+export async function getToken(){ 
   const current_token = localStorage.getItem("USER_TOKEN");
 
   if(current_token){
@@ -39,9 +39,9 @@ export async function getToken():Promise<string | undefined>{
   }else{
       try{
         await getUserToken();
-        await getToken();
+        return await getToken();
       }catch(error: any){
-        return error?.message;
+        console.log(error?.message);
       }
   }
 }
