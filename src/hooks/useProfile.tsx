@@ -1,30 +1,32 @@
 import { useEffect, useState } from "react"
-import { UseToken } from "./useToken";
 import { getUserProfile, getUserTopFive } from "@/auth/spotify-function";
 import { useRouter } from "next/navigation";
+import { getToken } from "@/auth/token";
 
 export const UseProfile = () => {
     const [userName, setUserName] = useState<string>();
     const [listSongs, setListSongs] = useState([]);
 
-    const token = UseToken();
     const router = useRouter();
 
-    async function userProfile(){
+    async function userProfile(token: string){
         const response = await getUserProfile(token);
         
-        console.log('response profile', response);
-
         if(response == 'The access token expired'){
             router.push("/");
             localStorage.removeItem('USER_TOKEN');
             return;
         }   
 
+        if(response == 'Invalid access token' && token){
+            router.refresh();
+            return;
+        }
+
         setUserName(response.display_name);
     }
 
-    async function userTopFive(){
+    async function userTopFive(token: string){
         const response = await getUserTopFive(token);
         
         if(response == 'The access token expired'){
@@ -33,18 +35,23 @@ export const UseProfile = () => {
             return;
         }
 
+        if(response == 'Invalid access token' && token){
+            router.refresh();
+            return;
+        }
+
         setListSongs(response);
     }
 
-
     async function fetchUserProfile(){
-        await Promise.all([userProfile(), userTopFive()]);
+        const token = await getToken();
+        await Promise.all([userProfile(token), userTopFive(token)]);
     }
 
     useEffect(() => {
         console.log("IS CALLED")
         fetchUserProfile();
-    },[token])
+    },[])
 
     return { userName, listSongs };
 }
