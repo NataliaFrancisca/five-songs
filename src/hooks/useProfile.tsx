@@ -45,9 +45,7 @@ export const UseProfile = () => {
 
     async function fetchUserProfile(){
         const token = await getToken();
-        if(token){
-            await Promise.all([userProfile(token), userTopFive(token)]);
-        }
+        await Promise.all([userProfile(token), userTopFive(token)]);
     }
 
     useEffect(() => {
