@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react"
 import { getUserToken } from "@/auth/token";
 
 export const UseToken = () => {

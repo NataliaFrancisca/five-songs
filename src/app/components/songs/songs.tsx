@@ -18,7 +18,7 @@ const Songs = (props: {userName: string; songsList: Array<any>}) => {
             <br />
 
             {props.songsList.map((song, index) => (
-                <Song key={index} song={{index: index+1, song_name: song.name, song_artist: song.artists[0].name}} />
+                <Song key={index} song={{index: index+1, song_name: song.name, song_artist: song.artists}} />
             ))}
            
         </SongsComponent>

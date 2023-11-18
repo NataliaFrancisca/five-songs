@@ -1,52 +1,50 @@
 import { useEffect, useState } from "react"
 import { UseToken } from "./useToken";
+import { getUserProfile, getUserTopFive } from "@/auth/spotify-function";
+import { useRouter } from "next/navigation";
 
 export const UseProfile = () => {
     const [userName, setUserName] = useState<string>();
-    const [listSongs, setListSongs] = useState();
+    const [listSongs, setListSongs] = useState([]);
 
     const token = UseToken();
+    const router = useRouter();
 
-    async function onGetProfile() {
-        try{
-            const response = await fetch('https://api.spotify.com/v1/me', {
-                headers: {
-                  Authorization: 'Bearer ' + token
-                }
-              });
+    async function userProfile(){
+        const response = await getUserProfile(token);
+        
+        console.log('response profile', response);
 
-              const data = await response.json();
-              return data.display_name;
-        }catch(error: any){
-            console.log('ERROR:', error?.message);
-        }
+        if(response == 'The access token expired'){
+            router.push("/");
+            localStorage.removeItem('USER_TOKEN');
+            return;
+        }   
+
+        setUserName(response.display_name);
     }
 
-    async function onGetTopFive(){
-        try{
-            const response = await fetch('https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=5', {
-                headers: {
-                  Authorization: 'Bearer ' + token
-                },
-                method: 'GET',
-            });
-          
-            const data = await response.json();
-            return data.items;
-        }catch(error: any){
-            console.log('ERROR:', error?.message);
+    async function userTopFive(){
+        const response = await getUserTopFive(token);
+        
+        if(response == 'The access token expired'){
+            router.push("/");
+            localStorage.removeItem('USER_TOKEN');
+            return;
         }
+
+        setListSongs(response);
     }
+
 
     async function fetchUserProfile(){
-        const [name, list] = await Promise.all([onGetProfile(), onGetTopFive()]);
-        setUserName(name);
-        setListSongs(list);
+        await Promise.all([userProfile(), userTopFive()]);
     }
 
     useEffect(() => {
+        console.log("IS CALLED")
         fetchUserProfile();
-    },[])
+    },[token])
 
     return { userName, listSongs };
 }

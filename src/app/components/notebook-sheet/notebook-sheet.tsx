@@ -21,7 +21,7 @@ const NotebookSheet = (props: {paperStyle: IPaperStyle }) => {
     return(
         <NotebookSheetComponent $paperTheme={props.paperStyle} ref={ref}>
             <PaperBackground />
-            {userName && listSongs && <Songs userName={userName} songsList={listSongs}/> }
+            {(userName && listSongs.length > 0) && <Songs userName={userName} songsList={listSongs}/> }
         </NotebookSheetComponent>
     )
 }
