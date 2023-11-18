@@ -22,9 +22,17 @@ export const SongComponent = styled.article`
             flex-wrap: wrap;
         }
 
-
         h2.bold{
             font-weight: bold;
+        }
+
+        h2.artist-name{
+            display: flex;
+            gap: 2px;
+
+            span:not(:last-child):after{
+                content: ",";
+            }
         }
     }
 
@@ -37,6 +45,12 @@ export const SongComponent = styled.article`
     }
 
     @media screen and (max-width: 400px){
+        gap: 10px;
+        
+        h1{
+            font-size: 52px;
+        }
+
         .group-artist-info{
             h2{
                 font-size: 14px;
