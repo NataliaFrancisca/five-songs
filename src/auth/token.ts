@@ -30,3 +30,28 @@ export async function getUserToken(){
         }
     }
 }
+
+export async function getToken():Promise<string>{ 
+  let current_token = localStorage.getItem('USER_TOKEN');
+
+  if(!current_token){
+    await getUserToken();
+    current_token = localStorage.getItem('USER_TOKEN');
+  }
+
+  return JSON.parse(current_token ? current_token : '');
+
+
+  // const current_token = localStorage.getItem("USER_TOKEN");
+
+  // if(current_token){
+  //     return await JSON.parse(current_token);
+  // }else{
+  //     try{
+  //       await getUserToken();
+  //       return await getToken();
+  //     }catch(error: any){
+  //       console.log(error?.message);
+  //     }
+  // }
+}
