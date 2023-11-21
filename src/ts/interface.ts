@@ -11,3 +11,8 @@ export interface IPaperStyle{
     title: string,
     color: string;
 }
+
+export interface INotebookInfo{
+    userName: string;
+    listSongs: Array<ISong>
+}

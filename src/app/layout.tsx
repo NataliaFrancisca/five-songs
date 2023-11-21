@@ -7,7 +7,7 @@ export default function RootLayout(props: React.PropsWithChildren) {
   return (
     <html>
       <head>
-        <title>TOP FIVE</title>
+        <title>FIVE SONGS</title>
       </head>
       <body>
         <StyledComponentsRegistry>

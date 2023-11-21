@@ -2,10 +2,11 @@ import { useEffect, useState } from "react"
 import { getUserProfile, getUserTopFive } from "@/auth/spotify-function";
 import { useRouter } from "next/navigation";
 import { getToken } from "@/auth/token";
+import { INotebookInfo } from "@/ts/interface";
 
 export const UseProfile = () => {
-    const [userName, setUserName] = useState<string>();
-    const [listSongs, setListSongs] = useState([]);
+    const [notebookInfo, setNotebookInfo] = useState<INotebookInfo>();
+    const [loading, setLoading] = useState(true);
 
     const router = useRouter();
 
@@ -22,8 +23,8 @@ export const UseProfile = () => {
             router.refresh();
             return;
         }
-
-        setUserName(response.display_name);
+        
+        return response.display_name;
     }
 
     async function userTopFive(token: string){
@@ -40,18 +41,21 @@ export const UseProfile = () => {
             return;
         }
 
-        setListSongs(response);
+        return response;
     }
 
     async function fetchUserProfile(){
         const token = await getToken();
-        await Promise.all([userProfile(token), userTopFive(token)]);
+        const [userName, listSongs] = await Promise.all([userProfile(token), userTopFive(token)]);
+        setNotebookInfo({userName, listSongs});
+        setLoading(false);
     }
 
     useEffect(() => {
         console.log("IS CALLED")
         fetchUserProfile();
+        console.log('loading', loading)
     },[])
 
-    return { userName, listSongs };
+    return { notebookInfo, loading };
 }
