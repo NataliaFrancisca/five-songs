@@ -1,3 +1,4 @@
+import { PAPER_THEME } from "@/styles/theme.css";
 import styled from "styled-components";
 
 export const LoginComponent = styled.main`
@@ -11,7 +12,11 @@ export const LoginComponent = styled.main`
         font-size: 64px;
         font-family: var(--font-spline-sans-mono);
         font-weight: 700;
-        color: #FCFE06;
+        animation-name: colorTransition;
+        animation-duration: 50s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
     }
 
     h2{
@@ -30,7 +35,11 @@ export const LoginComponent = styled.main`
         font-size: 54px;
         font-family: var(--font-spline-sans-mono);
         font-weight: 700;
-        color: #FCFE06;
+        animation-name: colorTransition;
+        animation-duration: 50s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;   
     }
 
     button{
@@ -57,4 +66,11 @@ export const LoginComponent = styled.main`
             width: 100%;
         }
     }
+
+    @keyframes colorTransition{
+        0% {color: ${PAPER_THEME[1].color}};
+        50% {color: ${PAPER_THEME[2].color}};
+        100% {color: ${PAPER_THEME[3].color}};
+    }
 `
+
