@@ -4,8 +4,6 @@ export const GlobalStyle = createGlobalStyle`
     :root {
         --font-spline-sans: 'Spline Sans', sans-serif;
         --font-spline-sans-mono: 'Spline Sans Mono', monospace;
-        --primary-color: #C6F277;
-        --secondary-color: #9974F8;
         --black-color:  #16120F;
         --white-color: #FDF6EC;
     }
