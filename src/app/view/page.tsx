@@ -7,17 +7,23 @@ import Loader from "../ui/loader";
 import { useRefContext } from "@/context/ref-context";
 import { getTheme } from "@/utils/get-theme";
 import Carousel from "../components/carousel/carousel";
+import { useEffect, useState } from "react";
+import { IPaperStyle } from "@/ts/interface";
 
 const View = () => {
+    const [theme, setTheme] = useState<IPaperStyle>();
     const { loading, notebookInfo} = UseProfile();
     const { refContext } = useRefContext();
 
-    const theme = getTheme();
-
-
+    
     const convertHtmlToImage = async() => {
         await htmlToImageConvert(refContext);
     }
+
+    useEffect(() => {
+        const response_theme = getTheme();
+        setTheme(response_theme);
+    },[])
 
     return(
         <ViewComponent>
