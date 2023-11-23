@@ -53,10 +53,16 @@ export const UseProfile = () => {
             setLoading(false);
         }
 
+
         if(!token_storage){
             await setUserToken();
-            router.refresh();
+            // window.location.reload();
         }
+
+        if(token_storage == null){
+            router.push("/");
+        }
+
     }
 
     useEffect(() => {
