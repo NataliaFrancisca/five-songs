@@ -12,11 +12,7 @@ export const LoginComponent = styled.main`
         font-size: 64px;
         font-family: var(--font-spline-sans-mono);
         font-weight: 700;
-        animation-name: colorTransition;
-        animation-duration: 50s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
+        color: #FCFE06;
     }
 
     h2{
@@ -35,11 +31,7 @@ export const LoginComponent = styled.main`
         font-size: 54px;
         font-family: var(--font-spline-sans-mono);
         font-weight: 700;
-        animation-name: colorTransition;
-        animation-duration: 50s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-        animation-direction: alternate;   
+        color: #FCFE06
     }
 
     button{
@@ -65,12 +57,6 @@ export const LoginComponent = styled.main`
         .box-login{
             width: 100%;
         }
-    }
-
-    @keyframes colorTransition{
-        0% {color: ${PAPER_THEME[1].color}};
-        50% {color: ${PAPER_THEME[2].color}};
-        100% {color: ${PAPER_THEME[3].color}};
     }
 `
 
