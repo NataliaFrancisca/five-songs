@@ -1,4 +1,4 @@
-export async function getUserToken(){
+export async function setUserToken(){
     let code_verifier_storage = localStorage.getItem('code_verifier');
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -26,32 +26,42 @@ export async function getUserToken(){
         const response = await body.json();
 
         if(response.access_token){
-          window.localStorage.setItem('USER_TOKEN', JSON.stringify(response.access_token));
+          localStorage.setItem('USER_TOKEN', response.access_token);
+          localStorage.setItem('REFRESH_TOKEN', response.refresh_token);
         }
     }
 }
 
-export async function getToken():Promise<string>{ 
-  let current_token = localStorage.getItem('USER_TOKEN');
+export async function getRefeshToken(){
+  const refreshToken = localStorage.getItem('REFRESH_TOKEN');
+  const url = "https://accounts.spotify.com/api/token";
 
-  if(!current_token){
-    await getUserToken();
-    current_token = localStorage.getItem('USER_TOKEN');
+  const clientId = process.env.NEXT_PUBLIC_CLIENT_ID;
+
+  if(refreshToken && clientId){
+    const payload = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
+        client_id: clientId,
+        grant_type: 'refresh_token',
+        refresh_token: refreshToken
+      }),
+    }
+
+    const body = await fetch(url, payload);
+    const response = await body.json();
+
+
+    console.log("RESPONSE REFRESH", response);
+
+    // if(response){
+    //   window.localStorage.setItem('USER_TOKEN', JSON.stringify(response.accessToken));
+    //   window.localStorage.setItem('REFRESH_TOKEN', response.refreshToken);
+    // }
+
   }
-
-  return JSON.parse(current_token ? current_token : '');
-
-
-  // const current_token = localStorage.getItem("USER_TOKEN");
-
-  // if(current_token){
-  //     return await JSON.parse(current_token);
-  // }else{
-  //     try{
-  //       await getUserToken();
-  //       return await getToken();
-  //     }catch(error: any){
-  //       console.log(error?.message);
-  //     }
-  // }
 }
+ 
