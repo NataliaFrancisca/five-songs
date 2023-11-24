@@ -1,7 +1,6 @@
 import { toPng } from 'html-to-image';
 
 export const htmlToImageConvert = async(elementRef: HTMLElement | null) => {
-    console.log('elementRef', elementRef);
     if(elementRef){
         toPng(elementRef, { cacheBust: false })
         .then((dataUrl) => {
