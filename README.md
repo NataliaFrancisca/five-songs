@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# **FIVE SONGS**
 
-## Getting Started
+This project was built to practice my knowledge in Next.JS and how to use the Spotify API.
 
-First, run the development server:
+The **FIVE SONGS** is a web page that can show your top 5 currently most listened-to songs
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## **Stack**:
+- Next.JS
+- Styled componentes
+- Spotify API
+- Nookies 
+- HTML to Image
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## **Assets**:
+- Icons: [Material Symbols](https://fonts.google.com/icons)
+- Figma Design: [Figma](https://www.figma.com/file/aZwWIPJtYUPPxQLINxTm28/FIVE-SONGS?type=design&node-id=0%3A1&mode=design&t=WrGnHwmCyln6VBKK-1)
+- Figma Board: [Figma](https://www.figma.com/file/RP3UZuMlqmDm98qggKo4Hp/FIVE-SONGS?type=whiteboard&node-id=0%3A1&t=VWTqgnjlhlKTEnKb-1)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## **Functionalities**:
+    1. Login with Spotify;
+    2. Show your top 5 songs you most listening;
+    3. Switch the page theme;
+    4. Save the theme that the user choose
+    5. Download an image that showcases these songs;
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## **Knowledge**:
+- How to use the Next.js routes;
+- How to work with the Spotify API;
+- Create a prototype using Figma;
+- How to handle local storage and cookies;
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## **Screenshot**:
+![App Screenshot](https://raw.githubusercontent.com/NataliaFrancisca/github-readme-images/main/five-songs-screenshot.png)
