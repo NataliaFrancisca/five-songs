@@ -1,3 +1,5 @@
+import { removeToken, setToken } from "@/storage/token";
+
 export async function setUserToken(){
     let code_verifier_storage = localStorage.getItem('code_verifier');
 
@@ -25,9 +27,13 @@ export async function setUserToken(){
         const body = await fetch("https://accounts.spotify.com/api/token", payload)
         const response = await body.json();
 
+  
+
         if(response.access_token){
-          localStorage.removeItem('USER_TOKEN');
-          localStorage.setItem('USER_TOKEN', response.access_token);
+          await removeToken();
+          await setToken(response.access_token);
+          // localStorage.removeItem('USER_TOKEN');
+          // localStorage.setItem('USER_TOKEN', response.access_token);
         }
     }
 }
