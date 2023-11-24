@@ -15,6 +15,6 @@ export async function getTheme(){
         return JSON.parse(theme.value);
     }else{
         setTheme(PAPER_THEME[0]);
-        return await getTheme();
+        await getTheme();
     }
 }
