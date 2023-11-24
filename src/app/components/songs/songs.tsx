@@ -7,7 +7,12 @@ const Songs = (props: {userName: string; songsList: Array<any>}) => {
 
     return(
         <SongsComponent>
-            <h1 id="user-title">{props.userName} top 5</h1>
+
+            <div id="user-title">
+                <h1 id="user-title_wrapper">{props.userName}</h1>
+                <h1>top 5</h1>
+            </div>
+
             <br />
             <ImageElement>
                 <img src="svg/sticker.svg" className="sticker-img"/>
