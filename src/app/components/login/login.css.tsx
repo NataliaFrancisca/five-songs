@@ -1,4 +1,3 @@
-import { PAPER_THEME } from "@/styles/theme.css";
 import styled from "styled-components";
 
 export const LoginComponent = styled.main`
@@ -6,13 +5,19 @@ export const LoginComponent = styled.main`
     background-color: var(--black-color);
     height: 100vh; 
     display: flex;
-    align-items: flex-end;
+
+    .box-login{
+        width: 40%;
+        align-self: center;
+        margin: 0 auto;
+    }
 
     h1{
         font-size: 64px;
         font-family: var(--font-spline-sans-mono);
         font-weight: 700;
         color: #FCFE06;
+        letter-spacing: 1px;
     }
 
     h2{
@@ -53,9 +58,16 @@ export const LoginComponent = styled.main`
         }
     }
 
+    @media screen and (max-width: 992px){
+        .box-login{
+            width: 60%;
+        }
+    }
+
     @media screen and (max-width: 600px){
         .box-login{
             width: 100%;
+            align-self: flex-end;
         }
     }
 `
