@@ -6,6 +6,7 @@ import Image from "next/image";
 const Login = () => {
 
     const onLogin = async() => {
+        localStorage.clear();
         await loginSpotify();
     }
 
