@@ -15,18 +15,17 @@ export const SongComponent = styled.article`
         color: #1A1B1C;
     }
 
-    .group-artist-info{
-        h2{
-            font-size: 18px;
-            font-weight: 300;
-            flex-wrap: wrap;
-        }
+    h2{
+        font-size: 18px;
+        font-weight: 300;
+        flex-wrap: wrap;
 
-        h2.bold{
+
+        &.bold{
             font-weight: bold;
         }
 
-        h2.artist-name{
+        &.artist-name{
             display: flex;
             gap: 2px;
 
@@ -37,10 +36,8 @@ export const SongComponent = styled.article`
     }
 
     @media screen and (max-width: 600px){
-        .group-artist-info{
-            h2{
-                font-size: 16px;
-            }
+        h2{
+            font-size: 16px;
         }
     }
 
@@ -51,10 +48,18 @@ export const SongComponent = styled.article`
             font-size: 52px;
         }
 
-        .group-artist-info{
-            h2{
-                font-size: 14px;
-            }
+
+        h2{
+            font-size: 14px;
+        }
+        
+    }
+
+    @media screen and (max-width: 360px){
+        gap: 4px;
+
+        h1{
+            font-size: 42px;
         }
     }
 
