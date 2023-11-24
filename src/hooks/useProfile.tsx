@@ -3,6 +3,7 @@ import { getUserProfile, getUserTopFive } from "@/auth/spotify-function";
 import { useRouter } from "next/navigation";
 import { setUserToken } from "@/auth/token";
 import { INotebookInfo } from "@/ts/interface";
+import { getToken } from "@/storage/token";
 
 export const UseProfile = () => {
     const [notebookInfo, setNotebookInfo] = useState<INotebookInfo>();
@@ -21,17 +22,23 @@ export const UseProfile = () => {
     }
 
     async function validateCurrentToken(){
-        const token_storage = localStorage.getItem("USER_TOKEN");
-
-        if(!token_storage && window.location.search == ""){
-            console.log("NOT HERE");
-            router.push("/");
+        const token_storage = await getToken();
+        
+        if(token_storage == undefined){
+            console.log("1. getting data");
+            await setUserToken();
         }
 
-        if(!token_storage){
+        if(token_storage == undefined && window.location.search){
+            console.log("2. getting data and reload");
             await setUserToken();
             window.location.reload();
-        } 
+        }
+
+        if(token_storage == undefined && window.location.search == ''){
+            console.log("3. go home");
+            router.push("/");
+        }
         
         if(token_storage){
             const response = await getUserProfile(token_storage);
