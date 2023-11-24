@@ -21,6 +21,7 @@ export const SongsComponent = styled.section`
         overflow: hidden;
         padding: 0 10px;
         flex-wrap: wrap;
+        margin: 0 auto;
     }
 
     #user-title h1{
@@ -46,7 +47,7 @@ export const SongsComponent = styled.section`
         cursor: pointer;
     }
 
-    @media screen and (max-width: 400px){
+    @media screen and (max-width: 570px){
         #user-title h1{
             font-size: 18px;
         }
