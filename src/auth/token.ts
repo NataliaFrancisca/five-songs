@@ -26,8 +26,8 @@ export async function setUserToken(){
         const response = await body.json();
 
         if(response.access_token){
+          localStorage.removeItem('USER_TOKEN');
           localStorage.setItem('USER_TOKEN', response.access_token);
-          localStorage.setItem('REFRESH_TOKEN', response.refresh_token);
         }
     }
 }
