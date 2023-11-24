@@ -1,28 +1,31 @@
 'use client';
-import { UseProfile } from "@/hooks/useProfile";
 import Image from "next/image";
-import { htmlToImageConvert } from "@/utils/convert-image";
-import { ViewComponent } from "./view.css"
-import Loader from "../ui/loader";
-import { useRefContext } from "@/context/ref-context";
-import { getTheme } from "@/utils/get-theme";
-import Carousel from "../components/carousel/carousel";
 import { useEffect, useState } from "react";
+import { htmlToImageConvert } from "@/utils/convert-image";
+import { UseProfile } from "@/hooks/useProfile";
+import { useRefContext } from "@/context/ref-context";
 import { IPaperStyle } from "@/ts/interface";
+import { getTheme } from "@/storage/theme";
+import { ViewComponent } from "./view.css"
+import Carousel from "../components/carousel/carousel";
+import Loader from "../ui/loader";
 
 const View = () => {
     const [theme, setTheme] = useState<IPaperStyle>();
     const { loading, notebookInfo} = UseProfile();
     const { refContext } = useRefContext();
 
-    
     const convertHtmlToImage = async() => {
         await htmlToImageConvert(refContext);
     }
 
+    const getUserTheme = async() => {
+        const theme_response = await getTheme();
+        setTheme(theme_response);
+    }
+
     useEffect(() => {
-        const response_theme = getTheme();
-        setTheme(response_theme);
+        getUserTheme();
     },[])
 
     return(
