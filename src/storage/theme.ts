@@ -1,25 +1,20 @@
+'use server';
+import { PAPER_THEME } from "@/styles/theme.css";
 import { IPaperStyle } from "@/ts/interface";
-import { parseCookies, setCookie} from "nookies";
+import { cookies } from "next/headers";
 
-function setThemeCookie(theme: IPaperStyle){
+export async function setTheme(theme: IPaperStyle){
+    cookies().set('USER_THEME', JSON.stringify(theme));
+}
+
+export async function getTheme(){
+    const cookie = cookies();
+    const theme = cookie.get('USER_THEME');
+
     if(theme){
-        setCookie(null, 'USER_THEME', JSON.stringify(theme), {
-            maxAge: 86400 * 7,
-            path: '/'
-        });
+        return JSON.parse(theme.value);
+    }else{
+        setTheme(PAPER_THEME[0]);
+        await getTheme();
     }
 }
-
-
-function getThemeCookie(){
-    const { USER_THEME } = parseCookies();
-
-    if(USER_THEME){
-        return JSON.parse(USER_THEME);
-    } else{
-        console.log("Theme not found.");
-        return false;
-    }
-}
-
-export { setThemeCookie, getThemeCookie };
