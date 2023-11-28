@@ -20,6 +20,24 @@ export const CarouselComponent = styled.section`
         }
     }
 
+    #list-songs-empty{
+        align-self: center;
+        display: flex;
+        align-items: center;
+        text-align: center;
+
+        background-color: var(--black-color);
+        padding: 30px 10px;
+        height: min-content;
+        width: 90%;
+        margin: 10px auto;
+
+        font-weight: 400;
+        font-family: var(--font-spline-sans-mono);
+        color: var(--white-color);
+        z-index: 111;
+    }
+
     #carousel-mark{
         display: flex;
         gap: 10px;
