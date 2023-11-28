@@ -6,13 +6,13 @@ import { UseProfile } from "@/hooks/useProfile";
 import { useRefContext } from "@/context/ref-context";
 import { IPaperStyle } from "@/ts/interface";
 import { getTheme } from "@/storage/theme";
-import { ViewComponent } from "./view.css"
+import { ErrorMessageStyle, ViewComponent } from "./view.css"
 import Carousel from "../components/carousel/carousel";
 import Loader from "../ui/loader";
 
 const View = () => {
     const [theme, setTheme] = useState<IPaperStyle>();
-    const { loading, notebookInfo} = UseProfile();
+    const { errorMessage, loading, notebookInfo, navLogin} = UseProfile();
     const { refContext } = useRefContext();
 
     const convertHtmlToImage = async() => {
@@ -31,6 +31,14 @@ const View = () => {
     return(
         <ViewComponent>
             {loading && <Loader $colorTheme={theme?.color}/>}
+
+            {errorMessage && 
+                <ErrorMessageStyle>
+                    <h1>{errorMessage}</h1>
+
+                   <button onClick={() => navLogin()}>LOGIN</button>
+                </ErrorMessageStyle>
+            }
 
             {!loading && theme && notebookInfo &&
                 <>
