@@ -10,6 +10,7 @@ import { CarouselComponent } from "./carousel.css";
 
 const Carousel = (props: {currentElement: number, carouselData: INotebookInfo}) => {
 
+    const { userName, listSongs } = props.carouselData;
     const { currentCarouselElement, onPrev, onNext } = UseCarousel(props.currentElement);
     const { refNotebook } = UseRefNotebook();
 
@@ -22,9 +23,10 @@ const Carousel = (props: {currentElement: number, carouselData: INotebookInfo}) 
                 
                 <NotebookSheetBG $paperTheme={PAPER_THEME[currentCarouselElement]} ref={refNotebook}>
                     <PaperBackground />
-                    <Songs userName={props.carouselData.userName} songsList={
-                        props.carouselData.listSongs
-                    }/>
+
+                    {listSongs.length > 0 
+                        ? <Songs userName={userName} songsList={listSongs}/> 
+                        : <h1 id="list-songs-empty">No songs here! Listen to songs to unlock the list</h1>}
                 </NotebookSheetBG>
 
                 <button onClick={() => onNext()}>

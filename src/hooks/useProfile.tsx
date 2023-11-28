@@ -8,31 +8,41 @@ import { getToken } from "@/storage/token";
 export const UseProfile = () => {
     const [notebookInfo, setNotebookInfo] = useState<INotebookInfo>();
     const [loading, setLoading] = useState(true);
+    const [errorMessage, setErrorMessage] = useState<string>();
 
     const router = useRouter();
+
+    function navLogin(){
+        router.push("/");
+    }
 
     async function fetchData(){
         const result = await validateCurrentToken();
 
-        if(result){
-            const [userName, listSongs] = await Promise.all([getUserProfile(result), getUserTopFive(result)]);
+        if(result?.status){
+            const [userName, listSongs] = await Promise.all([getUserProfile(result.message), getUserTopFive(result.message)]);
             setNotebookInfo({userName: userName.display_name, listSongs});
             setLoading(false);
         }
-    }
 
-    async function validateCurrentToken(){
-        const token_storage = await getToken();
-        
-        if(token_storage == undefined){
-            console.log("1. getting data");
-            await setUserToken();
+        if(!result?.status){
+            setErrorMessage(result?.message);
         }
 
-        if(token_storage == undefined && window.location.search){
-            console.log("2. getting data and reload");
+        setLoading(false);
+    }
+
+    async function validateCurrentToken():Promise<{ status: boolean; message: string; }>{
+        const token_storage = await getToken();
+
+        if(token_storage == undefined){
             await setUserToken();
-            window.location.reload();
+            
+            const generated_token = await getToken();
+
+            if(generated_token){
+                return {status: true, message: generated_token};
+            }
         }
 
         if(token_storage == undefined && window.location.search == ''){
@@ -44,16 +54,18 @@ export const UseProfile = () => {
             const response = await getUserProfile(token_storage);
 
             switch(response){
+                case `Unexpected token 'U', "User not r"... is not valid JSON`:
+                    return {status: false, message: "User is not registered in Developer Dashboard, please wait the final version."};
                 case 'The access token expired':
-                    router.push("/");
-                    break;
+                    return {status: false, message: "Token expired, please make login"};
                 case 'Invalid access token':
-                    router.refresh();
-                    break;
+                   return {status: false, message: "Something wrong, please reload the page"};
             }
 
-            return token_storage;
-        }    
+            return {status: true, message: token_storage}
+        }
+
+        return {status: false, message: "Your token expired or it's not saved, please make login"};
     }
 
     useEffect(() => {
@@ -61,5 +73,5 @@ export const UseProfile = () => {
     },[])
 
 
-    return { notebookInfo, loading };
+    return { errorMessage, notebookInfo, loading, navLogin };
 }

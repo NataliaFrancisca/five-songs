@@ -21,7 +21,6 @@ export const SongsComponent = styled.section`
         overflow: hidden;
         padding: 0 10px;
         flex-wrap: wrap;
-        margin: 0 auto;
     }
 
     #user-title h1{

@@ -20,4 +20,9 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
     }
+
+    button{
+        cursor: pointer;
+        transition: all ease-in-out .4s;
+    }
 `
