@@ -64,10 +64,29 @@ export const LoginComponent = styled.main`
         }
     }
 
-    @media screen and (max-width: 600px){
+    @media screen and (max-width: 576px){
+        padding: 0 20px;
+
         .box-login{
             width: 100%;
             align-self: flex-end;
+        }
+
+        #logo-image{
+            width: 200px;
+            height: 200px;
+        }
+
+        h1{
+            font-size: 54px;
+        }
+
+        h2{
+            font-size: 18px;
+        }
+
+        span#subtitle_styled{
+            font-size: 44px;
         }
     }
 `
