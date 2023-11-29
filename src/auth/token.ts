@@ -27,13 +27,9 @@ export async function setUserToken(){
         const body = await fetch("https://accounts.spotify.com/api/token", payload)
         const response = await body.json();
 
-  
-
         if(response.access_token){
           await removeToken();
-          await setToken(response.access_token);
-          // localStorage.removeItem('USER_TOKEN');
-          // localStorage.setItem('USER_TOKEN', response.access_token);
+          await setToken(response.access_token, response.refresh_token);
         }
     }
 }
@@ -59,9 +55,6 @@ export async function getRefeshToken(){
 
     const body = await fetch(url, payload);
     const response = await body.json();
-
-
-    console.log("RESPONSE REFRESH", response);
 
     // if(response){
     //   window.localStorage.setItem('USER_TOKEN', JSON.stringify(response.accessToken));
