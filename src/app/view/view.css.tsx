@@ -43,7 +43,7 @@ export const NotebookSheetBG = styled.section<{$paperTheme?: IPaperStyle}>`
     #paper-lines{
         display: grid;
         position: absolute;
-        grid-template-rows: repeat(9, 68px);
+        grid-template-rows: repeat(9, 70px);
         width: 100%;
 
         span{
@@ -58,7 +58,7 @@ export const NotebookSheetBG = styled.section<{$paperTheme?: IPaperStyle}>`
 
     #punched-paper-column{
         display: grid;
-        grid-template-rows: repeat(9, 68px);
+        grid-template-rows: repeat(9, 70px);
         border-right: 2px solid rgba(194, 45, 45, 0.57);
         align-items: center;
         justify-content: center;
