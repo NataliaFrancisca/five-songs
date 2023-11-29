@@ -4,9 +4,9 @@ export const SongComponent = styled.article`
     display: grid;
     grid-template-columns: 30px auto;
     align-items: center;
-    width: 100%;
     margin-left: 10px;
     gap: 20px;
+    width: 100%;
 
     h1{
         font-size: 58px;
@@ -16,51 +16,39 @@ export const SongComponent = styled.article`
     }
 
     h2{
+        display: flex;
         font-size: 18px;
-        font-weight: 300;
-        flex-wrap: wrap;
-
+        font-weight: 400;
 
         &.bold{
             font-weight: bold;
         }
+    }
 
-        &.artist-name{
-            display: flex;
-            gap: 2px;
-
-            span:not(:last-child):after{
-                content: ",";
-            }
-        }
+    h2.artist-name{
+        /* width: 300px;
+        white-space: nowrap; 
+        overflow: hidden;
+        text-overflow: ellipsis; 
+        background-color: red; */
     }
 
     @media screen and (max-width: 600px){
+        h1{
+            font-size: calc(56px + 6 * ((100vw - 320px) / 680));
+        }
+
         h2{
-            font-size: 16px;
+            font-size: calc(16px + 6 * ((100vw - 320px) / 680));
         }
     }
 
     @media screen and (max-width: 400px){
         gap: 10px;
-        
-        h1{
-            font-size: 52px;
-        }
-
-
-        h2{
-            font-size: 14px;
-        }
-        
     }
 
     @media screen and (max-width: 360px){
-        gap: 4px;
-
-        h1{
-            font-size: 42px;
-        }
+        gap: 6px;
     }
 
 `
