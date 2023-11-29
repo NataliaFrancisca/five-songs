@@ -1,42 +1,34 @@
 'use client';
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { htmlToImageConvert } from "@/utils/convert-image";
 import { UseProfile } from "@/hooks/useProfile";
+import { UseTheme } from "@/hooks/useTheme";
 import { useRefContext } from "@/context/ref-context";
-import { IPaperStyle } from "@/ts/interface";
-import { getTheme } from "@/storage/theme";
 import { ErrorMessageStyle, ViewComponent } from "./view.css"
 import Carousel from "../components/carousel/carousel";
 import Loader from "../ui/loader";
 
 const View = () => {
-    const [theme, setTheme] = useState<IPaperStyle>();
-    const { errorMessage, loading, notebookInfo, navLogin} = UseProfile();
+    const router = useRouter();
+
+    const { theme } = UseTheme();
+    const { errorMessage, loading, notebookInfo } = UseProfile();
     const { refContext } = useRefContext();
 
     const convertHtmlToImage = async() => {
         await htmlToImageConvert(refContext);
     }
 
-    const getUserTheme = async() => {
-        const theme_response = await getTheme();
-        setTheme(theme_response);
-    }
-
-    useEffect(() => {
-        getUserTheme();
-    },[])
-
     return(
         <ViewComponent>
             {loading && <Loader $colorTheme={theme?.color}/>}
 
-            {errorMessage && 
+            {errorMessage?.status == false && 
                 <ErrorMessageStyle>
-                    <h1>{errorMessage}</h1>
+                    <h1>{errorMessage?.message}</h1>
 
-                   <button onClick={() => navLogin()}>LOGIN</button>
+                   <button onClick={() => router.push("/")}>LOGIN</button>
                 </ErrorMessageStyle>
             }
 
