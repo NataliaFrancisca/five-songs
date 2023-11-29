@@ -2,16 +2,10 @@ import styled from "styled-components";
 
 export const SongsComponent = styled.section`
     display: grid;
-    grid-template-rows: repeat(9, 68px);
+    grid-template-rows: repeat(9, 70px);
     align-items: center;
     z-index: 11;
     width: 100%;
-
-    aside{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
 
     #user-title{
         display: flex;
