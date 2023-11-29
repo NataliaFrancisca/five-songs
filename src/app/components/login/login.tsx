@@ -6,7 +6,6 @@ import Image from "next/image";
 const Login = () => {
 
     const onLogin = async() => {
-        localStorage.clear();
         await loginSpotify();
     }
 
@@ -14,7 +13,7 @@ const Login = () => {
         <LoginComponent>
             <article className="box-login">
 
-                <Image src="svg/logo.svg" alt="icon download" width={300} height={300}/>
+                <Image src="svg/logo.svg" alt="icon download" width={300} height={300} id="logo-image" priority/>
                 <h1>FIVE <br/> SONGS</h1>
                 
                 <h2>discover your top <span id="subtitle_styled">5</span></h2>
