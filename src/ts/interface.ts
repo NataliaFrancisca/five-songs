@@ -4,8 +4,6 @@ export interface ISong{
     song_artist: Array<{name: string}>;
 }
 
-
-
 export interface IPaperStyle{
     id: number,
     title: string,
@@ -15,4 +13,15 @@ export interface IPaperStyle{
 export interface INotebookInfo{
     userName: string;
     listSongs: Array<ISong>
+}
+
+export interface IAxiosError{
+    response: {
+        data: {
+            error: {
+                status: number;
+                message: string;
+            }
+        }
+    }
 }
