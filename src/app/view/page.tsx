@@ -1,48 +1,72 @@
 'use client';
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { htmlToImageConvert } from "@/utils/convert-image";
-import { UseProfile } from "@/hooks/useProfile";
+import axios from "axios";
+
+import { useQuery } from "react-query";
 import { UseTheme } from "@/hooks/useTheme";
-import { useRefContext } from "@/context/ref-context";
-import { ErrorMessageStyle, ViewComponent } from "./view.css"
+import { ViewComponentStyled } from "./view.css";
+import { validateToken } from "@/utils/validate-token";
+import { IAxiosError } from "@/ts/interface";
+
+import ButtonDownload from "../components/btn-download/button-download";
 import Carousel from "../components/carousel/carousel";
+import Error from "../components/error/error";
 import Loader from "../ui/loader";
 
 const View = () => {
-    const router = useRouter();
-
     const { theme } = UseTheme();
-    const { errorMessage, loading, notebookInfo } = UseProfile();
-    const { refContext } = useRefContext();
 
-    const convertHtmlToImage = async() => {
-        await htmlToImageConvert(refContext);
+    const { data, isLoading, error } = useQuery('user_profile', async() => {
+        const token = await validateToken();
+
+        const [displayName, listSongs] = await Promise.all([
+            axios.get("https://api.spotify.com/v1/me", {
+                headers: {
+                    Authorization: 'Bearer ' + token
+                }
+            }).then(response => response.data.display_name),
+
+            axios.get("https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=5", {
+                headers: {
+                    Authorization: 'Bearer ' + token
+                }
+            }).then(response => response.data.items)
+        ]);
+
+        return { displayName, listSongs }
+    }, {
+        refetchOnWindowFocus: false
+    })
+
+    if(isLoading){
+        return ( 
+            <ViewComponentStyled>
+                <Loader $colorTheme={theme?.color}/>
+            </ViewComponentStyled>
+        )   
+    }
+
+    if(error){
+        const error_status = error as IAxiosError;
+        const { status, message } = error_status.response.data.error;
+
+        if(status != 200){
+            return (
+                <ViewComponentStyled>
+                    <Error message={message} />
+                </ViewComponentStyled>
+            )
+        }
     }
 
     return(
-        <ViewComponent>
-            {loading && <Loader $colorTheme={theme?.color}/>}
-
-            {errorMessage?.status == false && 
-                <ErrorMessageStyle>
-                    <h1>{errorMessage?.message}</h1>
-
-                   <button onClick={() => router.push("/")}>LOGIN</button>
-                </ErrorMessageStyle>
-            }
-
-            {!loading && theme && notebookInfo &&
+        <ViewComponentStyled>
+            {theme && data &&
                 <>
-                    <button id="btn-download" onClick={() => convertHtmlToImage()}>
-                        <Image src="icon/download.svg" alt="icon download" width={20} height={20}/>
-                    </button>
-
-                    <Carousel currentElement={theme.id} carouselData={notebookInfo}/>
+                    <ButtonDownload />
+                    <Carousel currentElement={theme.id} carouselData={{userName: data.displayName, listSongs: data.listSongs}}/>
                 </>
             }
-
-        </ViewComponent>
+        </ViewComponentStyled>
     )
 }
 
