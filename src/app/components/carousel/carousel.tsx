@@ -26,7 +26,8 @@ const Carousel = (props: {currentElement: number, carouselData: INotebookInfo}) 
 
                     {listSongs.length > 0 
                         ? <Songs userName={userName} songsList={listSongs}/> 
-                        : <h1 id="list-songs-empty">No songs here! Listen to songs to unlock the list</h1>}
+                        : <h1 id="list-songs-empty">No songs here! Listen to songs to unlock the list</h1>
+                    }
                 </NotebookSheetBG>
 
                 <button onClick={() => onNext()}>
