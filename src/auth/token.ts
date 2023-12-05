@@ -28,7 +28,7 @@ export async function setUserToken(){
         const response = await body.json();
 
         if(response.access_token){
-          // await removeToken();
+          await removeToken();
           await setToken(response.access_token, response.refresh_token);
         }
     }
@@ -57,7 +57,7 @@ export async function setRefreshToken(){
     const response = await body.json();
 
     if(response){
-      // await removeToken();
+      await removeToken();
       await setToken(response.access_token, response.refresh_token);
     }
   }
