@@ -1,7 +1,7 @@
 import { IPaperStyle } from "@/ts/interface";
 import styled from "styled-components";
 
-export const ViewComponent = styled.main`
+export const ViewComponentStyled = styled.main`
     min-height: 100vh;
     height: 100vh;
     background-color: #000000;
@@ -21,12 +21,6 @@ export const ViewComponent = styled.main`
         :hover{
             filter: brightness(80%);
         }
-    }
-
-    #btn-download{
-        display: flex;
-        align-self: flex-end;
-        margin-right: 20px;
     }
 `
 
@@ -68,46 +62,6 @@ export const NotebookSheetBG = styled.section<{$paperTheme?: IPaperStyle}>`
             height: 24px;
             border-radius: 50%;
             background-color: #1A1B1C;
-        }
-    }
-`
-
-export const ErrorMessageStyle = styled.div`
-    background-color: var(--white-color);
-    padding: 20px;
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-
-    h1:before{
-        content: "";
-        height: auto;
-        width: 10px;
-        display: block;
-        background-color: #FF0C38;
-        margin-left: 10px;
-        margin: 0 10px;
-    }
-
-    h1{
-        font-size: 18px;
-        font-weight: 400;
-        display: flex;
-    }
-
-    button{
-        width: 60%;
-        padding: 16px 10px;
-        margin: 0 auto;
-        background-color: #FF0C38;
-        border-radius: 4px;
-        font-weight: bold;
-        color: var(--white-color);
-        font-size: 14px;
-
-        &:hover{
-            background-color: #a70926;
         }
     }
 `

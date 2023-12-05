@@ -2,9 +2,8 @@
 import { cookies } from 'next/headers';
 
 export async function setToken(acessToken: string, refreshToken: string){
-    const oneHour = 60 * 60 * 1000;
-    cookies().set('USER_TOKEN', acessToken, { secure: true, expires: Date.now() + oneHour})
-    cookies().set('REFRESH_TOKEN', refreshToken, {secure: true})
+    cookies().set('USER_TOKEN', acessToken)
+    cookies().set('REFRESH_TOKEN', refreshToken)
 }
 
 export async function getToken(){

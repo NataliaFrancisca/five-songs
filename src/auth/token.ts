@@ -1,4 +1,4 @@
-import { removeToken, setToken } from "@/storage/token";
+import { getRefreshToken, removeToken, setToken } from "@/storage/token";
 
 export async function setUserToken(){
     let code_verifier_storage = localStorage.getItem('code_verifier');
@@ -28,14 +28,14 @@ export async function setUserToken(){
         const response = await body.json();
 
         if(response.access_token){
-          await removeToken();
+          // await removeToken();
           await setToken(response.access_token, response.refresh_token);
         }
     }
 }
 
-export async function getRefeshToken(){
-  const refreshToken = localStorage.getItem('REFRESH_TOKEN');
+export async function setRefreshToken(){
+  const refreshToken = await getRefreshToken();
   const url = "https://accounts.spotify.com/api/token";
 
   const clientId = process.env.NEXT_PUBLIC_CLIENT_ID;
@@ -56,11 +56,10 @@ export async function getRefeshToken(){
     const body = await fetch(url, payload);
     const response = await body.json();
 
-    // if(response){
-    //   window.localStorage.setItem('USER_TOKEN', JSON.stringify(response.accessToken));
-    //   window.localStorage.setItem('REFRESH_TOKEN', response.refreshToken);
-    // }
-
+    if(response){
+      // await removeToken();
+      await setToken(response.access_token, response.refresh_token);
+    }
   }
 }
  
