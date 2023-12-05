@@ -8,7 +8,7 @@ The **FIVE SONGS** is a web page that can show your top 5 currently most listene
 - Next.JS
 - Styled componentes
 - Spotify API
-- Nookies 
+- React-query 
 - HTML to Image
 
 ## **Assets**:
