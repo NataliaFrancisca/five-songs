@@ -4,17 +4,14 @@ import { getToken } from "@/storage/token";
 export async function validateToken(){
     const token_cookies = await getToken();
 
-    if(!token_cookies){
+    if(token_cookies == undefined){
         await setUserToken();
+        const new_token = await getToken();
 
-        const new_token_cookies = await getToken(); 
-
-        if(new_token_cookies){
-            return new_token_cookies;
+        if(new_token){
+            return new_token;
         }
     }
 
-    if(token_cookies){
-        return token_cookies;
-    }
+    return token_cookies;
 }
