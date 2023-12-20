@@ -5,8 +5,7 @@ import PaperBackground from "@/app/ui/paper-background";
 import Songs from "../songs/songs";
 import { INotebookInfo } from "@/ts/interface";
 import { UseRefNotebook } from "@/hooks/useRef";
-import { NotebookSheetBG } from "@/app/view/view.css";
-import { CarouselComponent } from "./carousel.css";
+import { CarouselComponent, CarouselViewStyled } from "./carousel.css";
 
 const Carousel = (props: {currentElement: number, carouselData: INotebookInfo}) => {
 
@@ -20,15 +19,16 @@ const Carousel = (props: {currentElement: number, carouselData: INotebookInfo}) 
                 <button onClick={() => onPrev()}>
                     <Image src="icon/arrow-left.svg" alt="icon download" width={10} height={18}/>
                 </button>
-                
-                <NotebookSheetBG $paperTheme={PAPER_THEME[currentCarouselElement]} ref={refNotebook}>
+
+                <CarouselViewStyled $paperTheme={PAPER_THEME[currentCarouselElement]} ref={refNotebook}>
                     <PaperBackground />
 
                     {listSongs.length > 0 
                         ? <Songs userName={userName} songsList={listSongs}/> 
                         : <h1 id="list-songs-empty">No songs here! Listen to songs to unlock the list</h1>
                     }
-                </NotebookSheetBG>
+                </CarouselViewStyled>
+              
 
                 <button onClick={() => onNext()}>
                     <Image src="icon/arrow-right.svg" alt="icon download" width={10} height={18}/>
