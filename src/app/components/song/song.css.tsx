@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 export const SongComponent = styled.article`
     display: grid;
-    grid-template-columns: 30px auto;
+    grid-template-columns: 20px auto;
     align-items: center;
     margin-left: 10px;
-    gap: 20px;
+    gap: 16px;
     width: 100%;
 
     h1{
@@ -16,7 +16,6 @@ export const SongComponent = styled.article`
     }
 
     h2{
-        display: flex;
         font-size: 18px;
         font-weight: 400;
 
@@ -25,13 +24,19 @@ export const SongComponent = styled.article`
         }
     }
 
-    h2.artist-name{
-        /* width: 300px;
-        white-space: nowrap; 
+    #song-titles{
+        white-space: nowrap;  
         overflow: hidden;
-        text-overflow: ellipsis; 
-        background-color: red; */
+        padding: 0 10px;
+        flex-wrap: wrap;
+
+        h2{
+            white-space: nowrap;  
+            overflow: hidden;
+            text-overflow: ellipsis; 
+        }
     }
+
 
     @media screen and (max-width: 600px){
         h1{
