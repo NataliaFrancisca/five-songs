@@ -1,9 +1,11 @@
+import { IPaperStyle } from "@/ts/interface";
 import styled from "styled-components";
 
 export const CarouselComponent = styled.section`
     display: flex;
     flex-direction: column;
     gap: 20px;
+    padding: 0 10px;
 
     #carousel{
         display: flex;
@@ -13,6 +15,7 @@ export const CarouselComponent = styled.section`
         width: 40%;
         min-height: 80vh;
         height: auto;
+        /* justify-content: space-between; */
 
         & button{
             margin: auto 0;
@@ -66,4 +69,16 @@ export const CarouselComponent = styled.section`
             width: 100%;
         }
     }
+`
+
+export const CarouselViewStyled = styled.section<{$paperTheme?: IPaperStyle}>`
+    background-color: ${props => props.$paperTheme?.color};
+    color: #1A1B1C;
+    width: 100%;
+    transition: all ease-in .2s;
+    border-radius: 4px;
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 60px auto;
 `
