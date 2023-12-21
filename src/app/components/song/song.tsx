@@ -10,7 +10,7 @@ const Song = (obj: {song: ISong}) => {
         <SongComponent>
             <h1>{index}</h1>
 
-            <div className="group-artist-info">
+            <div id="song-titles">
                 <h2 className="bold">{song_name}</h2>
                 <h2 className="artist-name">{generate_h2_names()}</h2>
             </div>
